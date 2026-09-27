@@ -1,0 +1,28 @@
+{
+  "model_name": "cnn",
+  "seed": 42,
+  "lr": 0.0005,
+  "epochs": 50,
+  "batch_size": 16,
+  "optimizer": "AdamW",
+  "scheduler": "ReduceLROnPlateau(mode=max, factor=0.5, patience=4)",
+  "loss": "CrossEntropyLoss(class_weights)",
+  "early_stopping_patience": 12,
+  "img_size": 224,
+  "normalization": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "img_size": 224,
+    "note": "Grayscale CLAHE \u2192 3-channel RGB \u2192 ImageNet normalization"
+  },
+  "class_mapping_file": "configs/class_mapping.json",
+  "checkpoint": "models/best_cnn.pth"
+}

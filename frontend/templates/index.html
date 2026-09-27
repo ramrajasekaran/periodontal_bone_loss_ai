@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explainable AI system for periodontal bone loss severity classification using deep learning and Grad-CAM visualization.">
+    <title>Periodontal Bone Loss AI - Explainable Diagnosis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">🦷</span>
+                <div>
+                    <h1 class="logo-title">PerioDx AI</h1>
+                    <p class="logo-subtitle">Explainable Periodontal Bone Loss Analysis</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <span class="nav-badge">Research Tool</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="section-header">
+                <h2>Radiograph Analysis</h2>
+                <p>Upload a panoramic dental radiograph to predict severity of periodontal bone resorption with AI-powered explainability.</p>
+            </div>
+
+            <div class="upload-controls">
+                <div class="model-selector">
+                    <label for="model-select">Model Architecture</label>
+                    <select id="model-select">
+                        {% for model in models %}
+                        <option value="{{ model }}" {% if model == 'ensemble' %}selected{% endif %}>
+                            {% if model == 'ensemble' %}Ensemble (Soft Voting - Recommended){% elif model == 'efficientnet' %}EfficientNet-B0{% elif model == 'resnet50' %}ResNet-50{% elif model == 'cnn' %}Custom CNN{% else %}{{ model }}{% endif %}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-placeholder" id="upload-placeholder">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <p class="upload-text">Drag & drop a panoramic X-ray here</p>
+                        <p class="upload-subtext">or click to browse · JPG, PNG</p>
+                    </div>
+                    <img id="preview-image" class="preview-image hidden" alt="Uploaded radiograph preview">
+                    <input type="file" id="file-input" accept=".jpg,.jpeg,.png" hidden>
+                </div>
+
+                <div class="action-row">
+                    <button id="clear-btn" class="btn btn-secondary hidden">Clear</button>
+                    <button id="analyze-btn" class="btn btn-primary" disabled>
+                        <span class="btn-text">Analyze Severity</span>
+                        <span class="btn-loader hidden">
+                            <span class="spinner"></span>
+                            Analyzing...
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Message -->
+        <div id="error-message" class="error-message hidden"></div>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-section hidden">
+            <div class="section-header">
+                <h2>Diagnosis Results</h2>
+                <p>AI-generated prediction with confidence scores and Grad-CAM explainability.</p>
+            </div>
+
+            <!-- Prediction Card -->
+            <div class="prediction-card" id="prediction-card">
+                <div class="prediction-header">
+                    <div class="prediction-label">Predicted Severity</div>
+                    <div class="prediction-grade" id="prediction-grade"></div>
+                    <div class="prediction-model" id="prediction-model"></div>
+                </div>
+                <div class="confidence-bars" id="confidence-bars"></div>
+            </div>
+
+            <!-- Grad-CAM Section -->
+            <div class="gradcam-section" id="gradcam-section">
+                <h3>Explainable AI — Grad-CAM Visualization</h3>
+                <p class="gradcam-description">The heatmap highlights regions the neural network focused on to arrive at its prediction. Warmer colors (red/yellow) indicate higher attention.</p>
+                <div class="gradcam-grid">
+                    <div class="gradcam-card">
+                        <img id="gradcam-original" alt="Preprocessed radiograph">
+                        <span class="gradcam-label">Preprocessed Input</span>
+                    </div>
+                    <div class="gradcam-card">
+                        <img id="gradcam-heatmap" alt="Attention heatmap">
+                        <span class="gradcam-label">Attention Heatmap</span>
+                    </div>
+                    <div class="gradcam-card">
+                        <img id="gradcam-overlay" alt="Grad-CAM overlay">
+                        <span class="gradcam-label">Overlay</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Periodontal Bone Loss AI &mdash; Explainable Deep Learning for Dental Diagnostics</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

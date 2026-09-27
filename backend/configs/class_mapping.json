@@ -1,0 +1,23 @@
+{
+  "class_mapping": {
+    "Grade_1_Mild": 0,
+    "Grade_2_Moderate": 1,
+    "Grade_3_Severe": 2
+  },
+  "label_to_name": {
+    "0": "Grade 1 (Mild)",
+    "1": "Grade 2 (Moderate)",
+    "2": "Grade 3 (Severe)"
+  },
+  "level_to_class": {
+    "1": 0,
+    "2": 1,
+    "3": 2
+  },
+  "num_classes": 3,
+  "class_names": [
+    "Grade 1 (Mild)",
+    "Grade 2 (Moderate)",
+    "Grade 3 (Severe)"
+  ]
+}

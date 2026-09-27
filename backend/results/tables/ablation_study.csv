@@ -1,0 +1,8 @@
+model,mode,accuracy,precision,recall,macro_f1
+cnn,image_only,0.1633,0.1644,0.3106,0.0984
+cnn,multimodal,0.517,0.407,0.3816,0.3672
+resnet50,image_only,0.6463,0.6188,0.6227,0.6164
+resnet50,multimodal,0.6395,0.6111,0.6187,0.6113
+efficientnet,image_only,0.585,0.555,0.5689,0.5574
+efficientnet,multimodal,0.5986,0.5665,0.5721,0.5665
+tabular_mlp,tabular_only,0.5374,0.5084,0.5678,0.5042

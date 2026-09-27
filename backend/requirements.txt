@@ -1,0 +1,8 @@
+torch
+torchvision
+pandas
+opencv-python
+matplotlib
+seaborn
+streamlit
+tqdm
