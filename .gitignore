@@ -1,14 +1,84 @@
+# =============================
+# Python
+# =============================
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# =============================
+# Virtual Environments
+# =============================
 .venv/
-env/
 venv/
-data/
-models/
-*.h5
+env/
+ENV/
+.env
+
+# =============================
+# Jupyter Notebooks
+# =============================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =============================
+# ML / Deep Learning
+# =============================
 *.pth
+*.pt
+*.h5
 *.ckpt
+*.pkl
+*.joblib
+*.model
+*.bin
+wandb/
+mlruns/
+lightning_logs/
+
+# =============================
+# Data & Datasets (large files)
+# =============================
+backend/data/
+data/
+*.zip
+*.tar.gz
+*.tar
+
+# =============================
+# OS & System
+# =============================
 .DS_Store
 Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# =============================
+# IDE & Editors
+# =============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =============================
+# Secrets & Config
+# =============================
+.env
+.env.local
+secrets.json
+
+# =============================
+# Logs
+# =============================
+*.log
+logs/
+
